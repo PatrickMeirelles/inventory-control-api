@@ -37,11 +37,11 @@ export const updateById = async (
       return result;
     }
 
-    throw new CustomError("Error to create a new patient", 500);
+    throw new CustomError("Error to update a patient", 500);
   } catch (error) {
     if (error instanceof CustomError) {
       return error;
     }
-    return new CustomError("Error to create a new patient", 500);
+    return new CustomError("Error to update a patient", 500);
   }
 };

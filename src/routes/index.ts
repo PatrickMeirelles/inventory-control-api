@@ -48,6 +48,7 @@ router.get(
 router.put(
   "/patients/:id",
   ensureAuth,
+  PatientsController.registerValidation,
   PatientsController.updateById
 );
 
@@ -65,12 +66,50 @@ router.post(
   ConsultsController.register
 );
 
+router.get(
+  "/consult/:id",
+  ensureAuth,
+  ConsultsController.getById
+);
+
+router.put(
+  "/consult/:id",
+  ensureAuth,
+  ConsultsController.registerValidation,
+  ConsultsController.updateById
+);
+
+router.delete(
+  "/consult/:id",
+  ensureAuth,
+  ConsultsController.deleteById
+);
+
 // ------------ TREATMENT ROUTES -------------
 router.post(
   "/treatment/register",
   ensureAuth,
   TreatmentsController.registerValidation,
   TreatmentsController.register
+);
+
+router.get(
+  "/treatment/:id",
+  ensureAuth,
+  TreatmentsController.getById
+);
+
+router.put(
+  "/treatment/:id",
+  ensureAuth,
+  TreatmentsController.registerValidation,
+  TreatmentsController.updateById
+);
+
+router.delete(
+  "/treatment/:id",
+  ensureAuth,
+  TreatmentsController.deleteById
 );
 
 export { router };
