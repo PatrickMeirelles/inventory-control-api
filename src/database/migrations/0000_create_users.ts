@@ -7,7 +7,7 @@ export async function up(knex: Knex) {
             table.bigIncrements("id").primary().index();
             table.string("name", 100).notNullable();
             table.string("email", 100).index().notNullable();
-            table.string("password", 20).notNullable();
+            table.string("password", 100).notNullable();
             table.datetime("created_at").notNullable().defaultTo(knex.fn.now());
             table.datetime("updated_at").notNullable().defaultTo(knex.fn.now());
         })

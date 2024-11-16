@@ -1,5 +1,7 @@
 import { Knex } from "knex";
 import path from "path";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 export const development: Knex.Config = {
   client: "sqlite3",
@@ -33,7 +35,7 @@ export const test: Knex.Config = {
 };
 
 export const production: Knex.Config = {
-  client: "mysql2",
+  client: "pg",
   migrations: {
     directory: path.resolve(__dirname, "..", "migrations"),
   },
@@ -41,12 +43,14 @@ export const production: Knex.Config = {
     directory: path.resolve(__dirname, "..", "seeds"),
   },
   connection: {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
-    port: Number(process.env.DB_PORT) || 5432,
-    ssl: { rejectUnauthorized: false },
+    host: process.env.PGHOST,
+    user: process.env.PGUSER,
+    database: process.env.PGDATABASE,
+    password: process.env.PGPASSWORD,
+    port: Number(process.env.PGPORT) || 5432,
+    ssl: {
+      rejectUnauthorized: true,
+    },
   },
   pool: {
     afterCreate: (connection: any, done: Function) => {
@@ -54,5 +58,3 @@ export const production: Knex.Config = {
     },
   },
 };
-
-export default { development, test, production };

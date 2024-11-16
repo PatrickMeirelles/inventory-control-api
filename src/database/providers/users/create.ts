@@ -9,7 +9,8 @@ export const create = async (
 ): Promise<number | CustomError> => {
   try {
     const hashedPassword = await Crypto.hashPassword(user.password);
-
+    console.log(user);
+    
     const alreadyUse = await Knex(ETableNames.users)
       .select("id")
       .where('email', user.email)
@@ -31,6 +32,8 @@ export const create = async (
 
     throw new CustomError("Error to create a new user", 500);
   } catch (error) {
+    console.log(error);
+    
     if (error instanceof CustomError) {
       return error;
     }

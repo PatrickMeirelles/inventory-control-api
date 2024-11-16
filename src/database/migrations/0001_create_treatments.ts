@@ -5,7 +5,7 @@ export async function up(knex: Knex) {
     return knex.schema
         .createTable(ETableNames.treatments, (table) => {
             table.bigIncrements("id").primary().index();
-            table.string("name", 100).notNullable();
+            table.string("name", 100).notNullable().unique();
             table.datetime("created_at").notNullable().defaultTo(knex.fn.now());
             table.datetime("updated_at").notNullable().defaultTo(knex.fn.now());
         })
