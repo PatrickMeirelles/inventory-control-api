@@ -4,10 +4,10 @@
     "production": "node ./build/index.js",
     "dev": "nodemon ./src/index.ts",
     "build": "tsc",
-    "knex:rollback-all": "knex --knexfile ./src/server/database/knex/Enviroment.ts migrate:rollback --all",
-    "knex:rollback": "knex --knexfile ./src/server/database/knex/Enviroment.ts migrate:rollback",
-    "knex:migrate": "knex --knexfile ./src/server/database/knex/Enviroment.ts migrate:latest",
-    "knex:seed": "knex --knexfile ./src/server/database/knex/Enviroment.ts seed:run",
+    "knex:rollback-all": "knex --knexfile ./src/database/knex/Enviroment.ts migrate:rollback --all",
+    "knex:rollback": "knex --knexfile ./src/database/knex/Enviroment.ts migrate:rollback",
+    "knex:migrate": "knex --knexfile ./src/database/knex/Enviroment.ts migrate:latest",
+    "knex:seed": "knex --knexfile ./src/database/knex/Enviroment.ts seed:run",
     "test": "jest"
   },
   "dependencies": {
@@ -37,6 +37,7 @@
     "@typescript-eslint/parser": "^5.30.6",
     "eslint": "^8.19.0",
     "jest": "^28.1.3",
+    "nodemon": "^3.1.7",
     "sqlite3": "^5.1.7",
     "supertest": "^6.3.4",
     "ts-jest": "^28.0.8",
