@@ -3,5 +3,6 @@ export interface IUsers {
     name: string;
     email: string;
     password: string;
-    creation_date: Date;
+    created_at?: string;
+    updated_at?: string;
   }

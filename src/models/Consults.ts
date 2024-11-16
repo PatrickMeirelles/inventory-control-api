@@ -6,4 +6,6 @@ export interface IConsults {
     finalConsultDate: Date;
     contactDate?: Date;
     contacted?: boolean;
+    created_at?: string;
+    updated_at?: string;
 }
