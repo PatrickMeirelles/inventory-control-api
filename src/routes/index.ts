@@ -33,6 +33,30 @@ router.post(
   PatientsController.register
 );
 
+router.get(
+  "/patients",
+  ensureAuth,
+  PatientsController.read
+);
+
+router.get(
+  "/patients/:id",
+  ensureAuth,
+  PatientsController.getById
+);
+
+router.put(
+  "/patients/:id",
+  ensureAuth,
+  PatientsController.updateById
+);
+
+router.delete(
+  "/patients/:id",
+  ensureAuth,
+  PatientsController.deleteById
+);
+
 // ----------- CONSULTS ROUTES --------------
 router.post(
   "/consult/register",

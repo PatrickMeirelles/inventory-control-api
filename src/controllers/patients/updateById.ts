@@ -15,11 +15,12 @@ export const registerValidation = validation({
     }),
 });
 
-export const register = async (
-    req: Request<{}, {}, IBodyProps>,
+export const updateById = async (
+    req: Request<{ id: string }, {}, IBodyProps>,
     res: Response
 ) => {
-    const result = await PatientsProvider.create(req.body);
+    const { id } = req.params;
+    const result = await PatientsProvider.updateById(req.body, Number(id));
   
     if (result instanceof Error) {
       console.log(`${req.method} ${req.originalUrl} | ${result.message} | ${result.status}`);
@@ -30,5 +31,5 @@ export const register = async (
       });
     }
 
-    return res.status(StatusCodes.CREATED).json()
+    return res.status(StatusCodes.CREATED).json({ message: "Patient updated successfully"})
 }

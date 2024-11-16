@@ -8,6 +8,8 @@ export async function up(knex: Knex) {
             table.string("name", 100).notNullable();
             table.string("document", 20).notNullable();
             table.string("clinic", 100)
+            table.datetime("created_at").notNullable().defaultTo(knex.fn.now());
+            table.datetime("updated_at").notNullable().defaultTo(knex.fn.now());
         })
 }
 
