@@ -9,7 +9,6 @@ export const create = async (
 ): Promise<number | CustomError> => {
   try {
     const hashedPassword = await Crypto.hashPassword(user.password);
-
     const alreadyUse = await Knex(ETableNames.users)
       .select("id")
       .where('email', user.email)
